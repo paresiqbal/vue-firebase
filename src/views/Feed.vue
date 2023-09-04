@@ -10,7 +10,16 @@ import { db } from "../main";
 
 const colRef = collection(db, "berita");
 
-getDocs(colRef).then((snapshot) => {
-  console.log(snapshot.docs);
-});
+getDocs(colRef)
+  .then((snapshot) => {
+    let berita = [];
+
+    snapshot.docs.forEach((doc) => {
+      berita.push({ ...doc.data(), id: doc.id });
+      console.log(berita);
+    });
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 </script>
