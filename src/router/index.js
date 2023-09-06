@@ -6,16 +6,21 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: () => import("../views/Homepage.vue"),
     },
     {
       path: "/feed",
-      name: "feed",
+      name: "Feed",
       component: () => import("../views/Feed.vue"),
       meta: {
         requiresAuth: true,
       },
+    },
+    {
+      path: "/addnews",
+      name: "AddNews",
+      component: () => import("../views/AddNews.vue"),
     },
     {
       path: "/register",
