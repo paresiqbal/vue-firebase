@@ -1,10 +1,11 @@
 <template>
-  <div>
-    <h1 class="text-center">Berita</h1>
+  <div class="py-8">
+    <h1 class="text-center text-4xl font-bold text-amber-500">News</h1>
   </div>
 </template>
 
 <script setup>
+// Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../main";
 
