@@ -13,18 +13,18 @@ const router = createRouter({
       path: "/feed",
       name: "Feed",
       component: () => import("../views/Feed.vue"),
-      meta: {
-        requiresAuth: true,
-      },
     },
     {
       path: "/addnews",
       name: "AddNews",
       component: () => import("../views/AddNews.vue"),
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/register",
-      name: "register",
+      name: "Register",
       component: () => import("../views/Register.vue"),
     },
     {
