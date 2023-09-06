@@ -1,4 +1,7 @@
+// vue
 import { createRouter, createWebHistory } from "vue-router";
+
+// firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const router = createRouter({
