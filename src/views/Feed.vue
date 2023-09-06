@@ -1,23 +1,28 @@
 <template>
   <div class="py-8">
     <h1 class="text-center text-4xl font-bold text-amber-500">News</h1>
+    <div v-for="newsItem in berita" :key="newsItem.id" class="py-4">
+      <h2 class="text-xl font-bold">{{ newsItem.title }}</h2>
+      <p>{{ newsItem.body }}</p>
+    </div>
   </div>
 </template>
 
 <script setup>
+// Vue
+import { ref } from "vue";
+
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../main";
 
 const colRef = collection(db, "berita");
+const berita = ref([]); // Create a reactive data property to store the news
 
 getDocs(colRef)
   .then((snapshot) => {
-    let berita = [];
-
     snapshot.docs.forEach((doc) => {
-      berita.push({ ...doc.data(), id: doc.id });
-      console.log(berita);
+      berita.value.push({ ...doc.data(), id: doc.id });
     });
   })
   .catch((err) => {
