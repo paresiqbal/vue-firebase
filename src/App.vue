@@ -29,11 +29,13 @@ const handleSignOut = () => {
 </script>
 
 <template>
-  <nav class="flex gap-4 justify-center py-8">
+  <nav
+    class="flex gap-8 justify-center py-6 bg-cyan-500 text-white font-5xl font-bold"
+  >
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/feed">Feed</RouterLink>
-    <RouterLink to="/register">Register</RouterLink>
-    <RouterLink to="/signin">Sign In</RouterLink>
+    <RouterLink to="/register" v-if="!isLogged">Register</RouterLink>
+    <RouterLink to="/signin" v-if="!isLogged">Sign In</RouterLink>
     <button @click="handleSignOut" v-if="isLogged">Sign Out</button>
   </nav>
   <RouterView />
