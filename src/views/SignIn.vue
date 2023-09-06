@@ -1,8 +1,9 @@
 <template>
-  <div class="flex flex-col items-center gap-2 justify-center">
-    <h1 class="text-center">SIGN IN</h1>
+  <div class="flex flex-col items-center gap-2 justify-center py-8">
+    <h1 class="text-center text-4xl font-bold text-amber-500">Sign In</h1>
     <p>
       <input
+        class="ring-1 ring-cyan-500 rounded-sm"
         type="email"
         name="email"
         placeholder="Your Email"
@@ -11,15 +12,26 @@
     </p>
     <p>
       <input
+        class="ring-1 ring-cyan-500 rounded-sm"
         type="password"
         name="password"
         placeholder="Your Password"
         v-model="password"
       />
     </p>
-    <p v-if="errMsg">{{ errMsg }}</p>
-    <button @click="signIn">Sign In</button>
-    <button @click="signWithGoogle">Sign In with Google</button>
+    <p class="text-red-500" v-if="errMsg">{{ errMsg }}</p>
+    <button
+      @click="signIn"
+      class="mt-4 py-2 px-8 bg-cyan-500 active:bg-cyan-600 rounded-md text-white font-bold"
+    >
+      Sign In
+    </button>
+    <button
+      @click="signWithGoogle"
+      class="mt-4 py-2 px-2 bg-cyan-500 active:bg-cyan-600 rounded-md text-white font-bold"
+    >
+      Sign In with Google
+    </button>
   </div>
 </template>
 
