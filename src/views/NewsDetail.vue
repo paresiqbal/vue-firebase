@@ -2,16 +2,12 @@
   <div class="py-8">
     <h1 class="text-4xl font-bold text-amber-500">{{ newsItem.title }}</h1>
     <p>{{ newsItem.body }}</p>
-
-    <!-- Display the image if an image URL is available -->
-    <img v-if="newsItemImageUrl" :src="newsItemImageUrl" alt="News Image" />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import { collection, doc, getDoc } from "firebase/firestore";
-
 import { useRouter } from "vue-router";
 import { db } from "../main";
 
@@ -25,12 +21,7 @@ onMounted(async () => {
     const newsItemDoc = doc(collection(db, "berita"), newsItemId);
     const docSnapshot = await getDoc(newsItemDoc);
     if (docSnapshot.exists()) {
-      const data = docSnapshot.data();
-      const imageUrl = data.image; // Assuming you store the image URL in the 'image' field in Firestore
-
-      // Set the news item data and image URL
-      newsItem.value = { ...data, id: docSnapshot.id };
-      newsItemImageUrl.value = imageUrl; // Set the image URL property
+      newsItem.value = { ...docSnapshot.data(), id: docSnapshot.id };
     } else {
       // Handle the case where the news item doesn't exist
     }
