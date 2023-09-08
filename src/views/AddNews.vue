@@ -42,10 +42,10 @@
 </template>
 
 <script setup>
-// vue
+// Vue imports
 import { ref } from "vue";
 
-// firebase
+// Firebase imports
 import { collection, addDoc } from "firebase/firestore";
 import { ref as imageRef, uploadBytes } from "firebase/storage";
 import { db, storage } from "../main";
@@ -53,19 +53,29 @@ import { db, storage } from "../main";
 // Create reactive data properties for the form fields
 const title = ref("");
 const body = ref("");
-const imageUpload = ref();
+const imageUpload = ref(null);
+
+// Method to handle the image upload
+const handleImageUpload = (event) => {
+  // Access the selected file from the input field
+  const file = event.target.files[0];
+
+  if (file) {
+    // Store the selected image file in the imageUpload ref
+    imageUpload.value = file;
+  }
+};
 
 // Method to handle the form submission
 const addNews = async () => {
-  const uploadImage = () => {
-    if (imageUpload == null) return;
-    const image = imageRef(storage, `images/`);
-    uploadBytes(image, imageUpload).then(() => {
-      alert("Image Uploaded");
-    });
-  };
-
   try {
+    // Upload the image first if it exists
+    if (imageUpload.value) {
+      const image = imageRef(storage, `images/${imageUpload.value.name}`);
+      await uploadBytes(image, imageUpload.value);
+      console.log("Image Uploaded");
+    }
+
     // Create a new document in the "berita" collection
     const docRef = await addDoc(collection(db, "berita"), {
       title: title.value,
@@ -75,6 +85,7 @@ const addNews = async () => {
     // Clear the form fields after successfully adding the news
     title.value = "";
     body.value = "";
+    imageUpload.value = null;
 
     console.log("News added with ID: ", docRef.id);
   } catch (error) {
