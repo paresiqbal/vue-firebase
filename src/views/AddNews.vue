@@ -39,6 +39,7 @@
       </button>
     </form>
   </div>
+  <img :src="imageUrl" alt="Uploaded Image" v-if="imageUrl" />
 </template>
 
 <script setup>
@@ -47,13 +48,17 @@ import { ref } from "vue";
 
 // Firebase imports
 import { collection, addDoc } from "firebase/firestore";
-import { ref as imageRef, uploadBytes } from "firebase/storage";
+import { ref as imageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../main";
+
+// Library
+import { v4 } from "uuid";
 
 // Create reactive data properties for the form fields
 const title = ref("");
 const body = ref("");
 const imageUpload = ref(null);
+const imageUrl = ref("");
 
 // Method to handle the image upload
 const handleImageUpload = (event) => {
@@ -71,15 +76,26 @@ const addNews = async () => {
   try {
     // Upload the image first if it exists
     if (imageUpload.value) {
-      const image = imageRef(storage, `images/${imageUpload.value.name}`);
+      const imageName = `${imageUpload.value.name + v4()}`;
+      const imageRefPath = `images/${imageName}`;
+      const image = imageRef(storage, imageRefPath);
+
+      // Upload the image
       await uploadBytes(image, imageUpload.value);
       console.log("Image Uploaded");
+
+      // Get the download URL of the uploaded image
+      const downloadURL = await getDownloadURL(image);
+
+      // Store the image URL in the imageUrl variable
+      imageUrl.value = downloadURL;
     }
 
     // Create a new document in the "berita" collection
     const docRef = await addDoc(collection(db, "berita"), {
       title: title.value,
       body: body.value,
+      imageUrl: imageUrl.value, // Add the image URL to the document
     });
 
     // Clear the form fields after successfully adding the news
