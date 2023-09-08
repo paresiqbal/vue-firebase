@@ -22,16 +22,6 @@
         cols="30"
         rows="10"
       ></textarea>
-
-      <!-- Add a file input for image uploads -->
-      <label for="image">Image</label>
-      <input
-        type="file"
-        accept="image/*"
-        name="image"
-        @change="handleImageUpload"
-      />
-
       <button
         class="text-gray-900 px-4 py-2 bg-white rounded-md font-bold"
         type="submit"
@@ -43,40 +33,24 @@
 </template>
 
 <script setup>
+// vue
 import { ref } from "vue";
-import { collection, addDoc } from "firebase/firestore";
-import { storage, db } from "../main"; // Import Firebase storage
 
+// firebase
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../main";
+
+// Create reactive data properties for the form fields
 const title = ref("");
 const body = ref("");
-const imageFile = ref(null);
 
-const handleImageUpload = (event) => {
-  imageFile.value = event.target.files[0];
-};
-
+// Method to handle the form submission
 const addNews = async () => {
   try {
-    let imageUrl = ""; // Initialize imageUrl
-
-    // Check if an image file is selected
-    if (imageFile.value) {
-      const storageRef = storage.ref();
-      const imageFileName = Date.now() + "-" + imageFile.value.name;
-      const imageRef = storageRef.child(imageFileName);
-
-      // Upload the image file to Firebase Storage
-      const snapshot = await imageRef.put(imageFile.value);
-
-      // Get the download URL of the uploaded image
-      imageUrl = await snapshot.ref.getDownloadURL();
-    }
-
-    // Create a new document in the "berita" collection with the image URL
+    // Create a new document in the "berita" collection
     const docRef = await addDoc(collection(db, "berita"), {
       title: title.value,
       body: body.value,
-      imageUrl: imageUrl,
     });
 
     // Clear the form fields after successfully adding the news
