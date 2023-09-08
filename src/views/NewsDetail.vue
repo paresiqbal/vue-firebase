@@ -2,6 +2,9 @@
   <div class="py-8">
     <h1 class="text-4xl font-bold text-amber-500">{{ newsItem.title }}</h1>
     <p>{{ newsItem.body }}</p>
+
+    <!-- Display the uploaded image -->
+    <img :src="newsItemImageUrl" alt="News Image" v-if="newsItemImageUrl" />
   </div>
 </template>
 
@@ -22,6 +25,7 @@ onMounted(async () => {
     const docSnapshot = await getDoc(newsItemDoc);
     if (docSnapshot.exists()) {
       newsItem.value = { ...docSnapshot.data(), id: docSnapshot.id };
+      newsItemImageUrl.value = newsItem.value.imageUrl; // Set the image URL
     } else {
       // Handle the case where the news item doesn't exist
     }

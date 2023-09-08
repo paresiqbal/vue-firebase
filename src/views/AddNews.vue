@@ -39,7 +39,6 @@
       </button>
     </form>
   </div>
-  <img :src="imageUrl" alt="Uploaded Image" v-if="imageUrl" />
 </template>
 
 <script setup>
