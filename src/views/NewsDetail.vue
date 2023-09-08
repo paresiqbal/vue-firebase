@@ -11,6 +11,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { collection, doc, getDoc } from "firebase/firestore";
+
 import { useRouter } from "vue-router";
 import { db } from "../main";
 
