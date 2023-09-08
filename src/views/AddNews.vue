@@ -17,11 +17,20 @@
       <textarea
         class="text-sm text-gray-900 outline-none rounded-md py-1 pl-1"
         name="body"
-        id="title"
+        id="body"
         v-model="body"
         cols="30"
         rows="10"
       ></textarea>
+      <label for="image">Image</label>
+      <input
+        class="text-sm text-gray-900 outline-none rounded-md py-1 pl-1"
+        type="file"
+        accept="image/*"
+        id="image"
+        ref="imageUpload"
+        @change="handleImageUpload"
+      />
       <button
         class="text-gray-900 px-4 py-2 bg-white rounded-md font-bold"
         type="submit"
@@ -38,14 +47,24 @@ import { ref } from "vue";
 
 // firebase
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../main";
+import { ref as imageRef, uploadBytes } from "firebase/storage";
+import { db, storage } from "../main";
 
 // Create reactive data properties for the form fields
 const title = ref("");
 const body = ref("");
+const imageUpload = ref();
 
 // Method to handle the form submission
 const addNews = async () => {
+  const uploadImage = () => {
+    if (imageUpload == null) return;
+    const image = imageRef(storage, `images/`);
+    uploadBytes(image, imageUpload).then(() => {
+      alert("Image Uploaded");
+    });
+  };
+
   try {
     // Create a new document in the "berita" collection
     const docRef = await addDoc(collection(db, "berita"), {
