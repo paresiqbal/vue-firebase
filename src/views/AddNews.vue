@@ -39,6 +39,14 @@
       >
         {{ editing ? "Update News" : "Upload News" }}
       </button>
+      <button
+        class="text-red-500 px-4 py-2 bg-white rounded-md font-bold"
+        type="button"
+        @click="deleteNews"
+        v-if="editing"
+      >
+        Delete News
+      </button>
     </form>
   </div>
 </template>
@@ -46,7 +54,14 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { collection, doc, getDoc, updateDoc, addDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  updateDoc,
+  addDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { ref as imageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../main";
 import { v4 } from "uuid";
@@ -86,6 +101,21 @@ const handleImageUpload = (event) => {
 
   if (file) {
     imageUpload.value = file;
+  }
+};
+
+const deleteNews = async () => {
+  if (editing) {
+    try {
+      const newsDoc = doc(db, "berita", newsId);
+      await deleteDoc(newsDoc);
+      console.log("News deleted");
+
+      // Optionally, you can add a confirmation message here before redirecting
+      router.push({ name: "Feed" });
+    } catch (error) {
+      console.error("Error deleting news: ", error);
+    }
   }
 };
 
