@@ -28,12 +28,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 // Firebase
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const email = ref("");
 const password = ref("");
@@ -48,18 +43,6 @@ const regsiter = () => {
     .catch((error) => {
       console.log(error.code);
       alert(error.message);
-    });
-};
-
-const signWithGoogle = () => {
-  const provider = new GoogleAuthProvider(); // Use 'new' keyword here
-  signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      console.log(result.user);
-      router.push("/feed");
-    })
-    .catch((error) => {
-      // handle error
     });
 };
 </script>
