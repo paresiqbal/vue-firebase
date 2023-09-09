@@ -18,7 +18,6 @@
       />
     </p>
     <button @click="regsiter">Register</button>
-    <button @click="signWithGoogle">Register In with Google</button>
   </div>
 </template>
 
