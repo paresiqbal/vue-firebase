@@ -18,6 +18,11 @@ const router = createRouter({
       component: () => import("../views/Sejarah.vue"),
     },
     {
+      path: "/visimisi",
+      name: "visimisi",
+      component: () => import("../views/VisiMisi.vue"),
+    },
+    {
       path: "/feed",
       name: "Feed",
       component: () => import("../views/Feed.vue"),

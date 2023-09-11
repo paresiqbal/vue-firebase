@@ -46,7 +46,7 @@ const handleSignOut = () => {
               <summary>PROFIL</summary>
               <ul class="p-2 bg-emerald-500">
                 <li><RouterLink to="/sejarah">Sejarah</RouterLink></li>
-                <li><a>Visi & Misi</a></li>
+                <li><RouterLink to="/visimisi">Visi & Misi</RouterLink></li>
                 <li><a>Dosen</a></li>
               </ul>
             </details>
