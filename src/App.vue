@@ -75,7 +75,9 @@ const handleSignOut = () => {
               </ul>
             </details>
           </li>
-          <li class="text-sm font-semibold"><a>KONTAK</a></li>
+          <li class="text-sm font-semibold">
+            <RouterLink to="/kontak">KONTAK</RouterLink>
+          </li>
           <li class="text-sm font-semibold">
             <RouterLink to="/addnews" v-if="isLogged">ADD NEWS</RouterLink>
           </li>

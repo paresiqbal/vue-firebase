@@ -58,6 +58,11 @@ const router = createRouter({
       component: () => import("../views/Mahasiswa.vue"),
     },
     {
+      path: "/kontak",
+      name: "Kontak",
+      component: () => import("../views/Kontak.vue"),
+    },
+    {
       path: "/addnews/:id?", // Make the "id" parameter optional by adding a "?" at the end
       name: "AddNews",
       component: () => import("../views/AddNews.vue"),
