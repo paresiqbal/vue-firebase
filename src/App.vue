@@ -6,6 +6,9 @@ import { onMounted, ref } from "vue";
 // Firebase
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
+// Components
+import { TopBar } from "./components/TopBar.vue";
+
 const isLogged = ref(false);
 const router = useRouter();
 
@@ -29,6 +32,7 @@ const handleSignOut = () => {
 </script>
 
 <template>
+  <TopBar />
   <nav
     class="flex gap-8 justify-center py-6 bg-cyan-500 text-white font-5xl font-bold"
   >
