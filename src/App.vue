@@ -64,7 +64,7 @@ const handleSignOut = () => {
           </li>
           <li class="text-sm font-semibold flex">
             <details>
-              <summary>AKADEMIN</summary>
+              <summary>AKADEMIK</summary>
               <ul class="p-2 bg-emerald-500">
                 <li><RouterLink to="/rps">RPS</RouterLink></li>
                 <li><RouterLink to="/jadwal">Jadwal Kuliah</RouterLink></li>
@@ -76,6 +76,20 @@ const handleSignOut = () => {
             </details>
           </li>
           <li class="text-sm font-semibold"><a>KONTAK</a></li>
+          <li class="text-sm font-semibold">
+            <RouterLink to="/addnews" v-if="isLogged">ADD NEWS</RouterLink>
+          </li>
+          <!-- <li class="text-sm font-semibold">
+            <RouterLink to="/register" v-if="!isLogged">REGISTER</RouterLink>
+          </li> -->
+          <li
+            class="text-sm font-semibold text-gray-900 bg-white ring-2 ring-amber-500 rounded-md"
+          >
+            <RouterLink to="/signin" v-if="!isLogged">SIGN IN</RouterLink>
+          </li>
+          <li class="text-sm font-semibold">
+            <button @click="handleSignOut" v-if="isLogged">SIGN OUT</button>
+          </li>
         </ul>
       </div>
     </div>
