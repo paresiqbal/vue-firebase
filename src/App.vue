@@ -6,6 +6,9 @@ import { onMounted, ref } from "vue";
 // Firebase
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
+// Components
+import Footer from "./components/Footer.vue";
+
 const isLogged = ref(false);
 const router = useRouter();
 
@@ -103,4 +106,5 @@ const handleSignOut = () => {
     </div>
   </nav>
   <RouterView />
+  <Footer />
 </template>
