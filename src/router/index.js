@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import("../views/VisiMisi.vue"),
     },
     {
+      path: "/dosen",
+      name: "Dosen",
+      component: () => import("../views/Dosen.vue"),
+    },
+    {
       path: "/feed",
       name: "Feed",
       component: () => import("../views/Feed.vue"),

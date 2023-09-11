@@ -47,7 +47,7 @@ const handleSignOut = () => {
               <ul class="p-2 bg-emerald-500">
                 <li><RouterLink to="/sejarah">Sejarah</RouterLink></li>
                 <li><RouterLink to="/visimisi">Visi & Misi</RouterLink></li>
-                <li><a>Dosen</a></li>
+                <li><RouterLink to="/dosen">Dosen</RouterLink></li>
               </ul>
             </details>
           </li>
