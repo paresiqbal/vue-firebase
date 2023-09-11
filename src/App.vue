@@ -90,7 +90,13 @@ const handleSignOut = () => {
             <RouterLink to="/signin" v-if="!isLogged">SIGN IN</RouterLink>
           </li>
           <li class="text-sm font-semibold">
-            <button @click="handleSignOut" v-if="isLogged">SIGN OUT</button>
+            <button
+              class="bg-white border-2 border-amber-500 text-gray-800"
+              @click="handleSignOut"
+              v-if="isLogged"
+            >
+              SIGN OUT
+            </button>
           </li>
         </ul>
       </div>
