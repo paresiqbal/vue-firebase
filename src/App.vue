@@ -69,7 +69,9 @@ const handleSignOut = () => {
                 <li><RouterLink to="/rps">RPS</RouterLink></li>
                 <li><RouterLink to="/jadwal">Jadwal Kuliah</RouterLink></li>
                 <li><RouterLink to="/matakuliah">Matakuliah</RouterLink></li>
-                <li><a>Jumlah Mahasiswa</a></li>
+                <li>
+                  <RouterLink to="/mahasiswa">Jumlah Mahasiswa</RouterLink>
+                </li>
               </ul>
             </details>
           </li>
