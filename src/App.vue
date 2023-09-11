@@ -29,34 +29,15 @@ const handleSignOut = () => {
 </script>
 
 <template>
-  <div class="py-2 px-36 text-white bg-green-600">
-    <a href="/" class="font-bold text-lg">S1-Ilmu Komputer</a>
-  </div>
-
-  <nav>
-    <div class="navbar bg-base-100">
-      <div class="flex-1">
-        <span class="flex justify-center items-center font-bold text-xl"
-          ><img src="./assets/upp.png" alt="logo" class="w-12" /><a href="/"
-            >Universitas Pat Petulai</a
-          ></span
-        >
-      </div>
-      <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-          <li><a>Link</a></li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul class="p-2 bg-base-100">
-                <li><a>Link 1</a></li>
-                <li><a>Link 2</a></li>
-              </ul>
-            </details>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <nav
+    class="flex gap-8 justify-center py-6 bg-cyan-500 text-white font-5xl font-bold"
+  >
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/feed">Feed</RouterLink>
+    <RouterLink to="/addnews" v-if="isLogged">Add News</RouterLink>
+    <RouterLink to="/register" v-if="!isLogged">Register</RouterLink>
+    <RouterLink to="/signin" v-if="!isLogged">Sign In</RouterLink>
+    <button @click="handleSignOut" v-if="isLogged">Sign Out</button>
   </nav>
   <RouterView />
 </template>

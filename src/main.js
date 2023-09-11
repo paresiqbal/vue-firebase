@@ -28,7 +28,6 @@ export const db = getFirestore();
 export const storage = getStorage();
 
 const app = createApp(App);
-
 app.use(router);
 
 app.mount("#app");
