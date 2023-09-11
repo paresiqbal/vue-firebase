@@ -51,7 +51,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 // Firebase Library
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref as imageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../main";
 
@@ -87,10 +87,14 @@ const addNews = async () => {
       imageUrl.value = downloadURL;
     }
 
+    // Add the current timestamp using serverTimestamp()
+    const timestamp = serverTimestamp();
+
     await addDoc(collection(db, "berita"), {
       title: title.value,
       body: body.value,
       imageUrl: imageUrl.value,
+      date: timestamp, // Include the date field
     });
     console.log("News added");
 
