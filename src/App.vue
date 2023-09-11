@@ -56,7 +56,7 @@ const handleSignOut = () => {
               <summary>INFORMASI</summary>
               <ul class="p-2 bg-emerald-500">
                 <li><RouterLink to="/feed">Berita</RouterLink></li>
-                <li><a>Beasiswa</a></li>
+                <li><RouterLink to="/beasiswa">Beasiswa</RouterLink></li>
               </ul>
             </details>
           </li>
