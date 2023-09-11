@@ -42,7 +42,7 @@ const showNewsDetail = (newsItemId) => {
 
 // Function to route to the AddNews page for editing
 const editNews = (newsItemId) => {
-  router.push({ name: "AddNews", params: { id: newsItemId } });
+  router.push({ name: "EditNews", params: { id: newsItemId } });
 };
 
 fetchNews();

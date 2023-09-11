@@ -26,6 +26,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/editnews/:id",
+      name: "EditNews",
+      component: () => import("../views/EditNews.vue"),
+      meta: {
+        requiresAuth: true, // If authentication is required for editing news
+      },
+    },
+    {
       path: "/news/:id",
       name: "news-detail",
       component: () => import("../views/NewsDetail.vue"),
