@@ -35,9 +35,11 @@ const handleSignOut = () => {
 
   <nav class="px-36 bg-emerald-500">
     <div class="navbar text-white">
-      <div class="flex-1 cursor-pointer flex items-center">
-        <img class="w-12" src="./assets/upp.png" alt="logo" />
-        <a class="text-xl font-semibold">Universitas Patpetulai</a>
+      <div class="flex-1 flex items-center">
+        <img class="w-12 cursor-pointer" src="./assets/upp.png" alt="logo" />
+        <a class="text-xl font-semibold cursor-pointer" href="/"
+          >Universitas Patpetulai</a
+        >
       </div>
       <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
@@ -65,7 +67,7 @@ const handleSignOut = () => {
               <summary>AKADEMIN</summary>
               <ul class="p-2 bg-emerald-500">
                 <li><RouterLink to="/rps">RPS</RouterLink></li>
-                <li><a>Jadwal Kuliah</a></li>
+                <li><RouterLink to="/jadwal">Jadwal Kuliah</RouterLink></li>
                 <li><a>Matakuliah</a></li>
                 <li><a>Jumlah Mahasiswa</a></li>
               </ul>
