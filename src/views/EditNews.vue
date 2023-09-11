@@ -49,11 +49,16 @@
 </template>
 
 <script setup>
+// Vue
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+
+// Firebase library
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore"; // Import deleteDoc
 import { db, storage } from "../main";
 import { ref as imageRef, uploadBytes, getDownloadURL } from "firebase/storage"; // Import storage from Firebase
+
+// uuid
 import { v4 } from "uuid";
 
 const route = useRoute();

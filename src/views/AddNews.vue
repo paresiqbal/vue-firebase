@@ -42,11 +42,16 @@
 </template>
 
 <script setup>
+// Vue
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { collection, doc, addDoc } from "firebase/firestore";
+
+// Firebase Library
+import { collection, addDoc } from "firebase/firestore";
 import { ref as imageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../main";
+
+// uuid
 import { v4 } from "uuid";
 
 const router = useRouter();
