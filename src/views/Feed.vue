@@ -1,18 +1,20 @@
 <template>
-  <div class="py-8">
+  <div class="py-8 px-32 flex flex-col items-center">
     <h1 class="text-center text-4xl font-bold text-amber-500">News</h1>
     <div
       v-for="newsItem in berita"
       :key="newsItem.id"
-      class="py-4 cursor-pointer"
+      class="py-4 mt-10 cursor-pointer"
     >
       <a @click="showNewsDetail(newsItem.id)">
-        <h2 class="text-xl font-bold">{{ newsItem.title }}</h2>
+        <h2 class="text-2xl font-bold hover:underline">{{ newsItem.title }}</h2>
       </a>
-      <!-- Add an "Edit" button to edit the news item -->
-      <button @click="editNews(newsItem.id)" class="text-sm text-blue-500">
-        Edit
-      </button>
+      <div class="flex justify-between">
+        <!-- Add an "Edit" button to edit the news item -->
+        <button @click="editNews(newsItem.id)" class="text-sm text-blue-500">
+          Edit
+        </button>
+      </div>
     </div>
   </div>
 </template>
