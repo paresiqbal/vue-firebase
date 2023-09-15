@@ -29,5 +29,6 @@ npm run build
 ```
 
 Screenshoot
-![Uploading image.png…]()
+![image](https://github.com/paresiqbal/vue-firebase/assets/73816062/1ae63387-4f92-4f9a-85b4-dc6595946c06)
+
 
